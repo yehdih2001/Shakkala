@@ -1,0 +1,30 @@
+entity Contract {
+	id String
+    active Boolean
+}
+
+entity Person {
+	id String
+    active Boolean
+}
+
+
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Person{contract} to Contract
+}
+
+
+
+
+// Set pagination options
+paginate Contract with infinite-scroll
+paginate Person with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Person, Contract
+// Set an angular suffix
+angularSuffix * with mySuffix
